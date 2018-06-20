@@ -27,15 +27,34 @@ public class NewLinkedList {
 
         if(this.isEmpty()){
             head = element;
+//            head.setNextElement(tail);
+//            head.setPreviousElement(tail);
             tail = element;
+//            tail.setNextElement(head);
+//            tail.setPreviousElement(head);
         }
 
         element.setPreviousElement(tail);
         element.setNextElement(head);
+
+        if(this.size == 1){
+            head.setNextElement(element);
+        }
+
         tail = element;
+        head.setPreviousElement(tail);
         size++;
 
         return this;
+    }
+
+    public Object get(int index){
+        Element tempElement = head;
+        for(int i = 0; i < index - 1; i++){
+            tempElement = tempElement.nextElement;
+        }
+
+        return tempElement.getValue();
     }
 
     private boolean isEmpty(){

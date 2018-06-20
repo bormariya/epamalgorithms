@@ -29,4 +29,9 @@ public class NewLinkedListTest {
     public void getTail() {
         assertEquals(3, linkedList.getTail());
     }
+
+    @Test
+    public void get() {
+        assertEquals(2, linkedList.get(2));
+    }
 }
