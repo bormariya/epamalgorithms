@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class NewLinkedListTest {
 
@@ -10,14 +10,15 @@ public class NewLinkedListTest {
     @Before
     public void setUp() throws Exception {
         linkedList = new NewLinkedList();
-        linkedList.addElement(1);
-        linkedList.addElement(2);
-        linkedList.addElement(3);
+        linkedList.addElement(1)
+                .addElement(2)
+                .addElement(5)
+                .addElement(3);
     }
 
     @Test
     public void getSize() {
-        assertEquals(3, linkedList.getSize());
+        assertEquals(4, linkedList.getSize());
     }
 
     @Test
@@ -32,6 +33,12 @@ public class NewLinkedListTest {
 
     @Test
     public void get() {
-        assertEquals(2, linkedList.get(2));
+        assertEquals(5, linkedList.get(3));
+    }
+
+    @Test
+    public void delete() {
+        linkedList.delete(5);
+        assertEquals(3, linkedList.get(3));
     }
 }

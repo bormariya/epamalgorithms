@@ -27,22 +27,20 @@ public class NewLinkedList {
 
         if(this.isEmpty()){
             head = element;
-//            head.setNextElement(tail);
-//            head.setPreviousElement(tail);
+            head.setNextElement(tail);
+            head.setPreviousElement(tail);
             tail = element;
-//            tail.setNextElement(head);
-//            tail.setPreviousElement(head);
+            tail.setNextElement(head);
+            tail.setPreviousElement(head);
         }
+        else {
+            tail.setNextElement(element);
+            element.setPreviousElement(tail);
+            element.setNextElement(head);
 
-        element.setPreviousElement(tail);
-        element.setNextElement(head);
-
-        if(this.size == 1){
-            head.setNextElement(element);
+            tail = element;
+            head.setPreviousElement(tail);
         }
-
-        tail = element;
-        head.setPreviousElement(tail);
         size++;
 
         return this;
@@ -55,6 +53,33 @@ public class NewLinkedList {
         }
 
         return tempElement.getValue();
+    }
+
+    public void delete(Object obj){
+        if(obj != null){
+            if(head.getValue().equals(obj)){
+                head = head.getNextElement();
+                tail.setNextElement(head);
+                head.setPreviousElement(tail);
+            }
+            else{
+                boolean notFound = true;
+                Element tempElement = head.getNextElement();
+                while(notFound){
+                    if(tempElement.getValue().equals(obj)){
+                        notFound = false;
+                        tempElement.getPreviousElement().setNextElement(
+                                tempElement.getNextElement());
+                        tempElement.getNextElement().setPreviousElement(
+                                tempElement.getPreviousElement());
+                        tempElement = null;
+                    }
+                    else{
+                        tempElement = tempElement.getNextElement();
+                    }
+                }
+            }
+        }
     }
 
     private boolean isEmpty(){
