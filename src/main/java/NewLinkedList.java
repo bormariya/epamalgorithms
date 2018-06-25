@@ -32,8 +32,7 @@ public class NewLinkedList {
             tail = element;
             tail.setNextElement(head);
             tail.setPreviousElement(head);
-        }
-        else {
+        } else {
             tail.setNextElement(element);
             element.setPreviousElement(tail);
             element.setNextElement(head);
@@ -61,8 +60,7 @@ public class NewLinkedList {
                 head = head.getNextElement();
                 tail.setNextElement(head);
                 head.setPreviousElement(tail);
-            }
-            else{
+            } else{
                 boolean notFound = true;
                 Element tempElement = head.getNextElement();
                 while(notFound){
@@ -73,8 +71,7 @@ public class NewLinkedList {
                         tempElement.getNextElement().setPreviousElement(
                                 tempElement.getPreviousElement());
                         tempElement = null;
-                    }
-                    else{
+                    } else{
                         tempElement = tempElement.getNextElement();
                     }
                 }

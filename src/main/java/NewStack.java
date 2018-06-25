@@ -31,8 +31,8 @@ public class NewStack {
     }
 
     private class Element{
-        Object value;
-        Element previousElement;
+        private Object value;
+        private Element previousElement;
 
         private Element(Object obj){
             this.value = obj;
