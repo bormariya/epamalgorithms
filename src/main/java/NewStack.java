@@ -1,7 +1,7 @@
 public class NewStack {
 
-    Element lastElement;
-    int size;
+    private Element lastElement;
+    private int size;
 
     public  NewStack(){
         this.size = 0;
